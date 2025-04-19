@@ -6,7 +6,8 @@ import tempfile
 import os
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:3000"])
+CORS(app, origins=["*"])
+
 
 def save_base64_image(base64_str):
     try:

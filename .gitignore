@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# React
+node_modules/
+build/
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# DeepFace models (optional - see notes below)
+# .deepface/

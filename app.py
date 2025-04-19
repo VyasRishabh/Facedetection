@@ -6,7 +6,7 @@ import tempfile
 import os
 
 app = Flask(__name__)
-CORS(app, origins=["*"])
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 
 def save_base64_image(base64_str):
@@ -26,9 +26,10 @@ def save_base64_image(base64_str):
         print(f"Error saving base64 image: {e}")
         return None
 
-@app.route('/verify-face', methods=['POST'])
+@app.route('/verify-face', methods=['POST', 'OPTIONS'])
 def verify_face():
-    data = request.get_json()
+    if request.method == 'OPTIONS':
+        return jsonify({}), 200
     
     if not data:
         return jsonify({"error": "No data provided"}), 400
